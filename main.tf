@@ -138,7 +138,7 @@ resource "aws_eip" "one" {
 # 9. Create Ubuntu server and install/enable apache2
 
 resource "aws_instance" "my-web-server" {
-  ami           = "ami-04bde106886a53080"
+  ami           = "ami-0c1a7f89451184c8b"
   instance_type = "t2.micro"
   availability_zone = "ap-south-1a"
   key_name = "terraform-access-key"
