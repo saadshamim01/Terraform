@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/saadshamim01/terraform']]])
+
+          }
+        }
+
+        stage ("terraform init") {
+            steps {
+                sh ('terraform init')
+            }
+        }
+
+        stage ("terraform Action") {
+            steps {
+                echo "Terraform action is --> ${action}"
+                sh '''
+
+                terraform apply -var="access_key"="access_key" -var="secret_key"="secret_key" --auto-approve
+                '''
+           }
+        }
+    }
+}
