@@ -20,7 +20,7 @@ pipeline {
                 echo "Terraform action is --> ${action}"
                 sh '''
 
-                terraform apply -var="access_key"="access_key" -var="secret_key"="secret_key" --auto-approve
+                terraform ${action} -var="access_key"="access_key" -var="secret_key"="secret_key" --auto-approve
                 '''
            }
         }
